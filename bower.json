@@ -2,17 +2,16 @@
   "name": "utils-animation",
   "version": "1.0.1",
   "authors": [
-    "Anonymous <anonymous@example.com>"
+    "Thiago Martins <rogue.thiago@gmail.com>"
   ],
-  "description": "An element providing a solution to no problem in particular.",
+  "description": "An element that provides the ability of controlling css classes depending if your element is on/off sight on the device's screen",
   "keywords": [
-    "web-component",
+    "web-components",
     "polymer",
     "seed"
   ],
   "main": "utils-animation.html",
   "license": "http://polymer.github.io/LICENSE.txt",
-  "homepage": "https://github.com/<USERNAME>/seed-element/",
   "ignore": [
     "/.*",
     "/test/"

@@ -1,7 +1,6 @@
 # utils-animation
 
-An element providing a starting point for your own reusable Polymer elements.
-
+An element that provides the ability of controlling css classes depending if your element is on/off sight on the device's screen
 
 ## Dependencies
 

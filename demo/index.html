@@ -18,19 +18,57 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </head>
   <body unresolved>
 
-    <p>An example of <code>&lt;utils-animation&gt;</code>:</p>
+    <style>
+      .square {
+        width: 200px;
+        height: 200px;
+        background-color: #00796b;
+        margin: 2px;
+      }
+      .utils-animatable {
+          transition: 1s;
+          position: relative;
+          right: 0px;
+      }
+      .shown {
+          opacity: 1;
+          visibility: visible;
+      }
+      .hidden {
+          opacity: 0;
+          visibility: hidden;
+          transition-delay: 10s;
+      }
+      .hidden.from-left {
+          right: 100px;
+      }
+    </style>
 
-    <button>Say Something</button>
+    <p>It's a simple component for adding effects WHEN your element is on sight, see the example bellow</p>
 
-    <utils-animation author='{"name": "Lord Meowser", "image": "http://placekitten.com/g/200/300"}' fancy>
-      <h2>Hello utils-animation</h2>
+    <utils-animation>
+        <div data-animate class="square"></div>
+        <div data-animate class="square"></div>
+        <div data-animate class="square"></div>
+        <div data-animate class="square"></div>
+        <div data-animate class="square"></div>
+        <div data-animate class="square"></div>
+        <div data-animate class="square"></div>
     </utils-animation>
 
-    <script>
-      document.querySelector('button').addEventListener('click', function() {
-        alert(document.querySelector('utils-animation').sayHello('Hallo!'));
-      });
-    </script>
+    <p>If for some reason you need kinda of a looping behaviour, you can add the attribute <strong>full</strong> and have
+        the behaviour bellow</p>
 
+    <utils-animation full>
+        <div data-animate class="square from-left"></div>
+        <div data-animate class="square from-left"></div>
+        <div data-animate class="square from-left"></div>
+        <div data-animate class="square from-left"></div>
+        <div data-animate class="square from-left"></div>
+        <div data-animate class="square from-left"></div>
+        <div data-animate class="square from-left"></div>
+    </utils-animation>
+
+    <p>I have configured 10s through <strong>css:transition-delay</strong>, wait it before scrolling again to top</p>
   </body>
 </html>
