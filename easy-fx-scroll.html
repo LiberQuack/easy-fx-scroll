@@ -11,18 +11,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <!--
 This element provides the ability of controlling css classes depending if your element is on/off sight on the device's screen...
-simply put your markup inside `<easy-fx-scroll>` and add `data-animate` attribute on elements you want animate
+simply put your markup inside `<easy-fx-scroll>` and add `data-fx-scroll` attribute on elements you want animate
 
 Example:
 
     <style>
       .shown { visibility: visible; }
       .hidden { visibility: hidden; }
-      .utils-animatable { transition: 1s; }
+      .fx-scroll { transition: 1s; }
     </style>
 
     <easy-fx-scroll>
-      <h1 data-animate>Hi</h1>
+      <h1 data-fx-scroll>Hi</h1>
     </easy-fx-scroll>
 
 @group Seed Elements
@@ -46,9 +46,9 @@ Example:
     is: 'easy-fx-scroll',
     properties: {
       /**
-       * Every element with attribute `data-animatable` will automatically have `utils-animatable` class
+       * Every element with `data-fx-scroll` attribute will automatically have `fx-scroll` class
        */
-      animatableClass: {value: 'utils-animatable', type: String},
+      animatableClass: {value: 'fx-scroll', type: String},
       /**
        * When your element is visible on device screen, shownClass will be added to your element
        */
@@ -64,7 +64,7 @@ Example:
     },
     attached: function() {
       var self = this;
-      var elm = this.querySelectorAll('[data-animate]');
+      var elm = this.querySelectorAll('[data-fx-scroll]');
 
       for (var i = 0; i < elm.length; i++) {
         elm[i].classList.add(self.animatableClass);

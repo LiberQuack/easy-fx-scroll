@@ -16,60 +16,59 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
     <link rel="import" href="../easy-fx-scroll.html">
   </head>
-  <body>
+  <body unresolved>
+    <dom-module>
+        <template is="dom-bind">
 
-    <style>
-      .square {
-        width: 200px;
-        height: 200px;
-        background-color: #00796b;
-        margin: 2px;
-      }
-      .utils-animatable {
-          transition: 1s;
-          position: relative;
-      }
-      .shown {
-          opacity: 1;
-          visibility: visible;
-      }
-      .shown.from-left{
-          right: 0;
-      }
-      .hidden {
-          opacity: 0;
-          visibility: hidden;
-      }
-      .hidden.from-left {
-          right: 100px;
-      }
-    </style>
+        <style>
+            .square {
+                width: 200px;
+                height: 200px;
+                background-color: #00796b;
+                margin: 2px;
+            }
+            .fx-scroll {
+                transition: 1s;
+                position: relative;
+            }
+            .shown {
+                opacity: 1;
+                visibility: visible;
+                right: 0;
+            }
+            .hidden {
+                opacity: 0;
+                visibility: hidden;
+            }
+            .hidden.from-left {
+                right: 100px;
+            }
+        </style>
 
-    <p>It's a simple component for adding effects WHEN your element is on sight, see the example bellow</p>
+            <p>It's a simple component for adding effects WHEN your element is on sight, see the example bellow</p>
+            <easy-fx-scroll>
+                <div data-fx-scroll class="square"></div>
+                <div data-fx-scroll class="square"></div>
+                <div data-fx-scroll class="square"></div>
+                <div data-fx-scroll class="square"></div>
+                <div data-fx-scroll class="square"></div>
+                <div data-fx-scroll class="square"></div>
+                <div data-fx-scroll class="square"></div>
+            </easy-fx-scroll>
 
-    <easy-fx-scroll>
-        <div data-animate class="square"></div>
-        <div data-animate class="square"></div>
-        <div data-animate class="square"></div>
-        <div data-animate class="square"></div>
-        <div data-animate class="square"></div>
-        <div data-animate class="square"></div>
-        <div data-animate class="square"></div>
-    </easy-fx-scroll>
+            <p>If for some reason you need kinda of a looping behaviour, you can add the attribute <strong>full</strong>
+                and have the behaviour bellow</p>
+            <easy-fx-scroll full>
+                <div data-fx-scroll class="square from-left"></div>
+                <div data-fx-scroll class="square from-left"></div>
+                <div data-fx-scroll class="square from-left"></div>
+                <div data-fx-scroll class="square from-left"></div>
+                <div data-fx-scroll class="square from-left"></div>
+                <div data-fx-scroll class="square from-left"></div>
+                <div data-fx-scroll class="square from-left"></div>
+            </easy-fx-scroll>
 
-    <p>If for some reason you need kinda of a looping behaviour, you can add the attribute <strong>full</strong> and have
-        the behaviour bellow</p>
-
-    <easy-fx-scroll full>
-        <div data-animate class="square from-left"></div>
-        <div data-animate class="square from-left"></div>
-        <div data-animate class="square from-left"></div>
-        <div data-animate class="square from-left"></div>
-        <div data-animate class="square from-left"></div>
-        <div data-animate class="square from-left"></div>
-        <div data-animate class="square from-left"></div>
-    </easy-fx-scroll>
-
-    <p>I have configured 10s through <strong>css:transition-delay</strong>, wait it before scrolling again to top</p>
+        </template>
+    </dom-module>
   </body>
 </html>
