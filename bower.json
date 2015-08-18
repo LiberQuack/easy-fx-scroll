@@ -1,5 +1,5 @@
 {
-  "name": "utils-animation",
+  "name": "easy-fx-scroll",
   "version": "1.0.1",
   "authors": [
     "Thiago Martins <rogue.thiago@gmail.com>"
@@ -10,7 +10,7 @@
     "polymer",
     "seed"
   ],
-  "main": "utils-animation.html",
+  "main": "easy-fx-scroll.html",
   "license": "http://polymer.github.io/LICENSE.txt",
   "ignore": [
     "/.*",

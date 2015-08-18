@@ -1,4 +1,4 @@
-# utils-animation
+# easy-fx-scroll
 
 An element that provides the ability of controlling css classes depending if your element is on/off sight on the device's screen
 
@@ -27,13 +27,13 @@ And you can run it via:
     polyserve
 
 Once running, you can preview your element at
-`http://localhost:8080/components/utils-animation/`, where `utils-animation` is the name of the directory containing it.
+`http://localhost:8080/components/easy-fx-scroll/`, where `easy-fx-scroll` is the name of the directory containing it.
 
 
 ## Testing Your Element
 
 Simply navigate to the `/test` directory of your element to run its tests. If
-you are using Polyserve: `http://localhost:8080/components/utils-animation/test/`
+you are using Polyserve: `http://localhost:8080/components/easy-fx-scroll/test/`
 
 ### web-component-tester
 

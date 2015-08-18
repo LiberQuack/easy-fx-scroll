@@ -11,7 +11,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <!--
 This element provides the ability of controlling css classes depending if your element is on/off sight on the device's screen...
-simply put your markup inside `<utils-animation>` and add `data-animate` attribute on elements you want animate
+simply put your markup inside `<easy-fx-scroll>` and add `data-animate` attribute on elements you want animate
 
 Example:
 
@@ -21,16 +21,16 @@ Example:
       .utils-animatable { transition: 1s; }
     </style>
 
-    <utils-animation>
+    <easy-fx-scroll>
       <h1 data-animate>Hi</h1>
-    </utils-animation>
+    </easy-fx-scroll>
 
 @group Seed Elements
-@element utils-animation
+@element easy-fx-scroll
 @demo demo/index.html
 @hero hero.svg
 -->
-<dom-module id="utils-animation">
+<dom-module id="easy-fx-scroll">
   <style>
     :host {
       display: block;
@@ -43,7 +43,7 @@ Example:
 
 <script>
   Polymer({
-    is: 'utils-animation',
+    is: 'easy-fx-scroll',
     properties: {
       /**
        * Every element with attribute `data-animatable` will automatically have `utils-animatable` class
@@ -62,7 +62,7 @@ Example:
        */
       full: {value: false, type: Boolean}
     },
-    ready: function() {
+    attached: function() {
       var self = this;
       var elm = this.querySelectorAll('[data-animate]');
 

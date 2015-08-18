@@ -12,11 +12,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-    <title>utils-animation Demo</title>
+    <title>easy-fx-scroll Demo</title>
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-    <link rel="import" href="../utils-animation.html">
+    <link rel="import" href="../easy-fx-scroll.html">
   </head>
-  <body unresolved>
+  <body>
 
     <style>
       .square {
@@ -28,16 +28,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       .utils-animatable {
           transition: 1s;
           position: relative;
-          right: 0px;
       }
       .shown {
           opacity: 1;
           visibility: visible;
       }
+      .shown.from-left{
+          right: 0;
+      }
       .hidden {
           opacity: 0;
           visibility: hidden;
-          transition-delay: 10s;
       }
       .hidden.from-left {
           right: 100px;
@@ -46,7 +47,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <p>It's a simple component for adding effects WHEN your element is on sight, see the example bellow</p>
 
-    <utils-animation>
+    <easy-fx-scroll>
         <div data-animate class="square"></div>
         <div data-animate class="square"></div>
         <div data-animate class="square"></div>
@@ -54,12 +55,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <div data-animate class="square"></div>
         <div data-animate class="square"></div>
         <div data-animate class="square"></div>
-    </utils-animation>
+    </easy-fx-scroll>
 
     <p>If for some reason you need kinda of a looping behaviour, you can add the attribute <strong>full</strong> and have
         the behaviour bellow</p>
 
-    <utils-animation full>
+    <easy-fx-scroll full>
         <div data-animate class="square from-left"></div>
         <div data-animate class="square from-left"></div>
         <div data-animate class="square from-left"></div>
@@ -67,7 +68,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <div data-animate class="square from-left"></div>
         <div data-animate class="square from-left"></div>
         <div data-animate class="square from-left"></div>
-    </utils-animation>
+    </easy-fx-scroll>
 
     <p>I have configured 10s through <strong>css:transition-delay</strong>, wait it before scrolling again to top</p>
   </body>
