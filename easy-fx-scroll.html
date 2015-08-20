@@ -60,7 +60,13 @@ Example:
       /**
        * Full provides looping behaviour, don't matter how many times your element is on/off sight
        */
-      full: {value: false, type: Boolean}
+      full: {value: false, type: Boolean},
+      /**
+       * When using this element with `full` attribute, your element will receive `dirtyClass` when
+       * it gets on sight for the very first time. This way you can track if your element has been 
+       * activated or not
+       */
+      dirtyClass: {value: 'dirty', type: String}, 
     },
     attached: function() {
       var self = this;
@@ -92,6 +98,7 @@ Example:
           for (var i = 0; i < elm.length; i++) {
             if (isVisible(elm[i])) {
               applyShownClass(elm[i]);
+              elm[i].classList.add(self.dirtyClass);
             } else {
               applyHiddenClass(elm[i]);
             }
