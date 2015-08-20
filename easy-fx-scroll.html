@@ -13,6 +13,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 This element provides the ability of controlling css classes depending if your element is on/off sight on the device's screen...
 simply put your markup inside `<easy-fx-scroll>` and add `data-fx-scroll` attribute on elements you want animate
 
+<style>
+    .center {
+        text-align: center;
+    }
+
+    video {
+        width: 60%;
+    }
+</style>
+
+<div class="center">
+    <video autoplay controls>
+        <source src="./demo/demo.webm" type="video/webm">
+    </video>
+</div>
+
 Example:
 
     <style>
@@ -24,11 +40,8 @@ Example:
     <easy-fx-scroll>
       <h1 data-fx-scroll>Hi</h1>
     </easy-fx-scroll>
-
-@group Seed Elements
 @element easy-fx-scroll
 @demo demo/index.html
-@hero hero.svg
 -->
 <dom-module id="easy-fx-scroll">
   <style>
