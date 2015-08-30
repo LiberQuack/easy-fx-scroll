@@ -4,5 +4,5 @@ An element that provides the ability of controlling css classes depending if you
     bower install --save MartinsThiago/easy-fx-scroll
 
 ## Release History
-* 2015-08-20  v1.0.1  Added dirtyClass feature
+* 2015-08-20  v1.1.0  Added dirtyClass feature
 * 2015-08-18  v1.0.0  Component launched and tested locally
