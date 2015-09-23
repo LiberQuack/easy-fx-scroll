@@ -1,0 +1,18 @@
+box: martinsthiago/nvm-browsers
+
+build:
+  steps:
+    - script:
+        name: dependencies installation
+        code: |
+          npm install -s
+          npm install -g gulp bower -s
+          bower install --allow-root
+    - script:
+        name: tests execution
+        code: |
+          gulp test
+    - script:
+        name: build execution
+        code: |
+          gulp
