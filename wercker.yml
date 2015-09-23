@@ -5,8 +5,8 @@ build:
     - script:
         name: dependencies installation
         code: |
-          npm install -g bower web-component-tester -s
-          bower install --allow-root
+          sudo npm install -g bower web-component-tester -s
+          sudo bower install --allow-root
     - script:
         name: tests execution
         code: |
