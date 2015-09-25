@@ -1,4 +1,4 @@
-box: martinsthiago/polymer-tester
+box: martinsthiago/polymer-tester:v1.0.0
 
 build:
   steps:
