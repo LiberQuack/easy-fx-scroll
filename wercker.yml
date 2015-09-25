@@ -1,0 +1,12 @@
+box: martinsthiago/polymer-tester
+
+build:
+  steps:
+    - script:
+        name: dependencies installation
+        code: |
+          bower install
+    - script:
+        name: tests execution
+        code: |
+          wct
