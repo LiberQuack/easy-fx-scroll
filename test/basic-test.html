@@ -20,35 +20,66 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <link rel="import" href="../easy-fx-scroll.html">
   </head>
   <body>
+     <style>
+            .square {
+                width: 400px;
+                height: 400px;
+                background-color: #00796b;
+                margin: 2px;
+            }
+            .fx-scroll {
+                transition: 1s;
+                position: relative;
+            }
+            .shown {
+                opacity: 1;
+                visibility: visible;
+                right: 0;
+            }
+            .hidden {
+                opacity: 0;
+                visibility: hidden;
+            }
+            .hidden.from-left {
+                right: 100px;
+            }
+        </style>
 
     <!-- You can use the document as a place to set up your fixtures. -->
-    <easy-fx-scroll></easy-fx-scroll>
+    <easy-fx-scroll>
+        <easy-fx-scroll>
+                <div id="0" data-fx-scroll class="square"></div>
+                <div id="1" data-fx-scroll class="square"></div>
+                <div id="2" data-fx-scroll class="square"></div>
+                <div id="3" data-fx-scroll class="square"></div>
+                <div id="4" data-fx-scroll class="square"></div>
+                <div id="5" data-fx-scroll class="square"></div>
+                <div id="6" data-fx-scroll class="square"></div>
+                <div id="7" data-fx-scroll class="square"></div>
+                <div id="8" data-fx-scroll class="square"></div>
+                <div id="9" data-fx-scroll class="square"></div>
+                <div id="10" data-fx-scroll class="square"></div>
+            </easy-fx-scroll>
+    </easy-fx-scroll>
 
     <script>
       var myEl = document.querySelector('easy-fx-scroll');
 
       suite('<easy-fx-scroll>', function() {
 
-        test('defines the "author" property', function() {
-          assert.equal(myEl.author.name, 'Dimitri Glazkov');
-          assert.equal(myEl.author.image, 'http://addyosmani.com/blog/wp-content/uploads/2013/04/unicorn.jpg');
+        test('After <easy-fx-scroll> bootstraps already visible elements have .shown class', function(){
+            var elements = document.querySelectorAll("[data-fx-scroll]");
+            var visibleElements = document.querySelectorAll(".shown");
+            var hiddenElements = document.querySelectorAll(".hidden");
+            
+            console.log("Total elements: " + elements.length);
+            console.log("Visible elements: " + visibleElements.length);
+            console.log("Hidden elements: " + hiddenElements.length);
+            
+            assert.notEqual(visibleElements.length, 0);
         });
-
-        test('says hello', function() {
-          assert.equal(myEl.sayHello(), 'easy-fx-scroll says, Hello World!');
-
-          var greetings = myEl.sayHello('greetings Earthlings');
-          assert.equal(greetings, 'easy-fx-scroll says, greetings Earthlings');
-        });
-
-        test('fires lasers', function(done) {
-          myEl.addEventListener('easy-fx-scroll-lasers', function(event) {
-            assert.equal(event.detail.sound, 'Pew pew!');
-            done();
-          });
-          myEl.fireLasers();
-        });
-
+        
+        
       });
     </script>
 
