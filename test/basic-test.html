@@ -9,79 +9,113 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
 
-    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../webcomponentsjs/webcomponents.min.js"></script>
     <script src="../../web-component-tester/browser.js"></script>
-
+    <script src="../bower_components/test-fixture/test-fixture-mocha.js"></script>
+    <script src="../bower_components/async/lib/async.js"></script>
+    <link rel="import" href="../bower_components/test-fixture/test-fixture.html"/>
     <!-- Step 1: import the element to test -->
     <link rel="import" href="../easy-fx-scroll.html">
-  </head>
-  <body>
-     <style>
-            .square {
-                width: 400px;
-                height: 400px;
-                background-color: #00796b;
-                margin: 2px;
-            }
-            .fx-scroll {
-                transition: 1s;
-                position: relative;
-            }
-            .shown {
-                opacity: 1;
-                visibility: visible;
-                right: 0;
-            }
-            .hidden {
-                opacity: 0;
-                visibility: hidden;
-            }
-            .hidden.from-left {
-                right: 100px;
-            }
-        </style>
+</head>
+<body>
+<style>
+    .square {
+        width: 400px;
+        height: 400px;
+        background-color: #00796b;
+        margin: 2px;
+    }
 
-    <!-- You can use the document as a place to set up your fixtures. -->
-    <easy-fx-scroll>
+    .fx-scroll {
+        transition: 1s;
+        position: relative;
+    }
+
+    .shown {
+        opacity: 1;
+        visibility: visible;
+        right: 0;
+    }
+
+    .hidden {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .hidden.from-left {
+        right: 100px;
+    }
+</style>
+
+<!-- You can use the document as a place to set up your fixtures. -->
+<test-fixture id="EasyFxScroll">
+    <template>
         <easy-fx-scroll>
-                <div id="0" data-fx-scroll class="square"></div>
-                <div id="1" data-fx-scroll class="square"></div>
-                <div id="2" data-fx-scroll class="square"></div>
-                <div id="3" data-fx-scroll class="square"></div>
-                <div id="4" data-fx-scroll class="square"></div>
-                <div id="5" data-fx-scroll class="square"></div>
-                <div id="6" data-fx-scroll class="square"></div>
-                <div id="7" data-fx-scroll class="square"></div>
-                <div id="8" data-fx-scroll class="square"></div>
-                <div id="9" data-fx-scroll class="square"></div>
-                <div id="10" data-fx-scroll class="square"></div>
+            <easy-fx-scroll>
+                <div data-fx-scroll class="square"></div>
+                <div data-fx-scroll class="square"></div>
+                <div data-fx-scroll class="square"></div>
+                <div data-fx-scroll class="square"></div>
+                <div data-fx-scroll class="square"></div>
+                <div data-fx-scroll class="square"></div>
+                <div data-fx-scroll class="square"></div>
+                <div data-fx-scroll class="square"></div>
+                <div data-fx-scroll class="square"></div>
+                <div data-fx-scroll class="square"></div>
+                <div data-fx-scroll class="square"></div>
+                <span id="pageEnd">Page End</span>
             </easy-fx-scroll>
-    </easy-fx-scroll>
+        </easy-fx-scroll>
+    </template>
+</test-fixture>
 
-    <script>
-      var myEl = document.querySelector('easy-fx-scroll');
+<script>
 
-      suite('<easy-fx-scroll>', function() {
+    describe('<easy-fx-scroll>', function () {
+        var myEl;
 
-        test('After <easy-fx-scroll> bootstraps already visible elements have .shown class', function(){
-            var elements = document.querySelectorAll("[data-fx-scroll]");
-            var visibleElements = document.querySelectorAll(".shown");
-            var hiddenElements = document.querySelectorAll(".hidden");
-            
-            console.log("Total elements: " + elements.length);
-            console.log("Visible elements: " + visibleElements.length);
-            console.log("Hidden elements: " + hiddenElements.length);
-            
-            assert.notEqual(visibleElements.length, 0);
+        beforeEach(function () {
+            myEl = fixture("EasyFxScroll");
         });
-        
-        
-      });
-    </script>
 
-  </body>
+        it('Should display elements some elements as visible in bootstrap', function (done) {
+            setTimeout(function () {
+                var elements = document.querySelectorAll("[data-fx-scroll]");
+                var visibleElements = document.querySelectorAll(".shown");
+                var hiddenElements = document.querySelectorAll(".hidden");
+
+                console.log("Total elements: " + elements.length);
+                console.log("Visible elements: " + visibleElements.length);
+                console.log("Hidden elements: " + hiddenElements.length);
+
+                expect(visibleElements.length).to.be.not.equal(0);
+                done();
+            },500);
+        });
+
+        it('Should display all elements as visible after scrolling page to the bottom', function (done) {
+            var totalElements = document.querySelectorAll("[data-fx-scroll]").length;
+            var initialHiddenElements = document.querySelectorAll(".hidden").length;
+
+            var depth = 0;
+            var intervalId = setInterval(function () {
+                scrollTo(0, depth += 50);
+            }, 1);
+
+            setTimeout(function () {
+                clearInterval(intervalId);
+                var shown = document.querySelectorAll(".shown").length;
+                expect(initialHiddenElements).to.be.below(totalElements);
+                expect(shown).to.be.equal(totalElements);
+                done();
+            }, 3000);
+        });
+    });
+</script>
+
+</body>
 </html>
