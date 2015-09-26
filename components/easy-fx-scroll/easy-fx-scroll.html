@@ -1,0 +1,132 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+This element provides the ability of controlling css classes depending if your element is on/off sight on the device's screen...
+simply put your markup inside `<easy-fx-scroll>` and add `data-fx-scroll` attribute on elements you want animate
+
+<style>
+    .center-video {
+        text-align: center;
+    }
+
+    video {
+        width: 60%;
+    }
+</style>
+
+<div class="center-video">
+    <video autoplay controls>
+        <source src="./demo/demo.webm" type="video/webm">
+    </video>
+</div>
+
+Example:
+
+    <style>
+      .shown { visibility: visible; }
+      .hidden { visibility: hidden; }
+      .fx-scroll { transition: 1s; }
+    </style>
+
+    <easy-fx-scroll>
+      <h1 data-fx-scroll>Hi</h1>
+    </easy-fx-scroll>
+@element easy-fx-scroll
+@demo demo/index.html
+-->
+<dom-module id="easy-fx-scroll">
+  <style>
+    :host {
+      display: block;
+    }
+  </style>
+  <template>
+    <content></content>
+  </template>
+</dom-module>
+
+<script>
+  Polymer({
+    is: 'easy-fx-scroll',
+    properties: {
+      /**
+       * Every element with `data-fx-scroll` attribute will automatically have `fx-scroll` class
+       */
+      animatableClass: {value: 'fx-scroll', type: String},
+      /**
+       * When your element is visible on device screen, shownClass will be added to your element
+       */
+      shownClass: {value: 'shown', type: String},
+      /**
+       * When your element gets off sight, hiddenClass will be added to your element
+       */
+      hiddenClass: {value: 'hidden', type: String},
+      /**
+       * Full provides looping behaviour, don't matter how many times your element is on/off sight
+       */
+      full: {value: false, type: Boolean},
+      /**
+       * When using this element with `full` attribute, your element will receive `dirtyClass` when
+       * it gets on sight for the very first time. This way you can track if your element has been 
+       * activated or not
+       */
+      dirtyClass: {value: 'dirty', type: String}, 
+    },
+    attached: function() {
+      var self = this;
+      var elm = this.querySelectorAll('[data-fx-scroll]');
+
+      for (var i = 0; i < elm.length; i++) {
+        elm[i].classList.add(self.animatableClass);
+        elm[i].classList.add(self.hiddenClass);
+      }
+
+      var isVisible = function(elm) {
+        var pos = (elm.offsetTop + elm.offsetHeight / 2) - window.scrollY;
+        return pos > 0 && pos < window.innerHeight;
+      };
+
+      var applyShownClass = function(elm) {
+        elm.classList.remove(self.hiddenClass);
+        elm.classList.add(self.shownClass);
+      };
+
+      var applyHiddenClass = function(elm) {
+        elm.classList.add(self.hiddenClass);
+        elm.classList.remove(self.shownClass);
+      };
+
+      var onScroll;
+      if (self.full) {
+        onScroll = function () {
+          for (var i = 0; i < elm.length; i++) {
+            if (isVisible(elm[i])) {
+              applyShownClass(elm[i]);
+              elm[i].classList.add(self.dirtyClass);
+            } else {
+              applyHiddenClass(elm[i]);
+            }
+          }
+        };
+      } else {
+        onScroll = function () {
+          for (var i = 0; i < elm.length; i++) {
+            isVisible(elm[i]) && applyShownClass(elm[i]);
+          }
+        };
+      }
+
+      window.addEventListener('scroll', onScroll);
+      onScroll();
+    }
+  });
+</script>

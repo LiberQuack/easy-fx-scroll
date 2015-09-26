@@ -1,0 +1,13 @@
+{
+  "name": "anchor-scroll",
+  "homepage": "https://github.com/bendc/anchor-scroll",
+  "_release": "810f35bbf9",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "810f35bbf99c81b6dd9248f74cd0e3c841b17a9a"
+  },
+  "_source": "git://github.com/bendc/anchor-scroll.git",
+  "_target": "*",
+  "_originalSource": "bendc/anchor-scroll"
+}

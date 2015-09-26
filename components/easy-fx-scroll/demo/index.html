@@ -1,0 +1,122 @@
+<!doctype html>
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>easy-fx-scroll Demo</title>
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="../easy-fx-scroll.html">
+  </head>
+  <body unresolved>
+    <dom-module>
+        <template is="dom-bind">
+
+        <style>
+            .square {
+                width: 200px;
+                height: 200px;
+                background-color: #00796b;
+                margin: 2px;
+            }
+            .fx-scroll {
+                transition: 1s;
+                position: relative;
+            }
+            .shown {
+                opacity: 1;
+                visibility: visible;
+                right: 0;
+            }
+            .hidden {
+                opacity: 0;
+                visibility: hidden;
+            }
+            .hidden.from-left {
+                right: 100px;
+            }
+        </style>
+
+<hr>        
+            <p>It's a simple component for adding effects WHEN your element is on sight, see the example bellow</p>
+
+            <p>Styles</p>
+<pre>
+.square { width: 200px; height: 200px; background-color: #00796b; margin: 2px; }
+.fx-scroll { transition: 1s; position: relative; }
+.shown { opacity: 1; visibility: visible; }
+.hidden { opacity: 0; visibility: hidden; }
+</pre>
+
+<p>Html</p>
+<pre>
+&lt;easy-fx-scroll&gt;
+    &lt;div data-fx-scroll class="square"&gt;&lt;/div&gt;
+    &lt;div data-fx-scroll class="square"&gt;&lt;/div&gt;
+    &lt;div data-fx-scroll class="square"&gt;&lt;/div&gt;
+    &lt;div data-fx-scroll class="square"&gt;&lt;/div&gt;
+    &lt;div data-fx-scroll class="square"&gt;&lt;/div&gt;
+    &lt;div data-fx-scroll class="square"&gt;&lt;/div&gt;
+    &lt;div class="square"&gt;&lt;/div&gt;
+&lt;/easy-fx-scroll&gt;
+</pre>
+
+    <p>Result:</p>
+            
+            <easy-fx-scroll>
+                <div data-fx-scroll class="square"></div>
+                <div data-fx-scroll class="square"></div>
+                <div data-fx-scroll class="square"></div>
+                <div data-fx-scroll class="square"></div>
+                <div data-fx-scroll class="square"></div>
+                <div data-fx-scroll class="square"></div>
+                <div data-fx-scroll class="square"></div>
+            </easy-fx-scroll>
+
+<hr>
+
+            <p>If for some reason you need kinda of a looping behaviour, you can add the attribute <strong>full</strong>
+                and have the behaviour bellow... ps: I changed the style for having nicer effects </p>
+            <p>Styles</p>
+<pre>
+.square { width: 200px; height: 200px; background-color: #00796b; margin: 2px; }
+.fx-scroll { transition: 1s; position: relative; }
+.shown { opacity: 1; visibility: visible; right: 0; }
+.hidden { opacity: 0; visibility: hidden; }
+.hidden.from-left { right: 100px; }
+</pre>
+
+<p>Html</p>
+<pre>
+&lt;easy-fx-scroll&gt;
+    &lt;div data-fx-scroll class="square from-left"&gt;&lt;/div&gt;
+    &lt;div data-fx-scroll class="square from-left"&gt;&lt;/div&gt;
+    &lt;div data-fx-scroll class="square from-left"&gt;&lt;/div&gt;
+    &lt;div data-fx-scroll class="square from-left"&gt;&lt;/div&gt;
+    &lt;div data-fx-scroll class="square from-left"&gt;&lt;/div&gt;
+    &lt;div data-fx-scroll class="square from-left"&gt;&lt;/div&gt;
+    &lt;div class="square"&gt;&lt;/div&gt;
+&lt;/easy-fx-scroll&gt;
+</pre>
+            <easy-fx-scroll full>
+                <div data-fx-scroll class="square from-left"></div>
+                <div data-fx-scroll class="square from-left"></div>
+                <div data-fx-scroll class="square from-left"></div>
+                <div data-fx-scroll class="square from-left"></div>
+                <div data-fx-scroll class="square from-left"></div>
+                <div data-fx-scroll class="square from-left"></div>
+                <div data-fx-scroll class="square from-left"></div>
+            </easy-fx-scroll>
+
+        </template>
+    </dom-module>
+  </body>
+</html>

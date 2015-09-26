@@ -1,0 +1,32 @@
+{
+  "name": "easy-fx-scroll",
+  "authors": [
+    "Thiago Martins <rogue.thiago@gmail.com>"
+  ],
+  "description": "An element that provides the ability of controlling css classes depending if your element is on/off sight on the device's screen",
+  "keywords": [
+    "web-components",
+    "polymer",
+    "seed"
+  ],
+  "main": "easy-fx-scroll.html",
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "ignore": [
+    "/.*",
+    "/test/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.0.0"
+  },
+  "devDependencies": {
+    "anchor-scroll": "bendc/anchor-scroll",
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "jquery": "~2.1.4",
+    "jquery-scrollto": "balupton/jquery-scrollto#~1.4.4",
+    "test-fixture": "Polymer/test-fixture#~0.2.0",
+    "web-component-tester": "*"
+  },
+  "resolutions": {
+    "webcomponentsjs": "^0.7.2"
+  }
+}
