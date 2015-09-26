@@ -67,7 +67,26 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <div data-fx-scroll class="square"></div>
                 <div data-fx-scroll class="square"></div>
                 <div data-fx-scroll class="square"></div>
-                <span id="pageEnd">Page End</span>
+            </easy-fx-scroll>
+        </easy-fx-scroll>
+    </template>
+</test-fixture>
+
+<test-fixture id="EasyFxScrollFull">
+    <template>
+        <easy-fx-scroll>
+            <easy-fx-scroll full>
+                <div data-fx-scroll class="square"></div>
+                <div data-fx-scroll class="square"></div>
+                <div data-fx-scroll class="square"></div>
+                <div data-fx-scroll class="square"></div>
+                <div data-fx-scroll class="square"></div>
+                <div data-fx-scroll class="square"></div>
+                <div data-fx-scroll class="square"></div>
+                <div data-fx-scroll class="square"></div>
+                <div data-fx-scroll class="square"></div>
+                <div data-fx-scroll class="square"></div>
+                <div data-fx-scroll class="square"></div>
             </easy-fx-scroll>
         </easy-fx-scroll>
     </template>
@@ -82,7 +101,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             myEl = fixture("EasyFxScroll");
         });
 
-        it('Should display elements some elements as visible in bootstrap', function (done) {
+        it('At the first startup some elements should already start as visible', function (done) {
             setTimeout(function () {
                 var elements = document.querySelectorAll("[data-fx-scroll]");
                 var visibleElements = document.querySelectorAll(".shown");
@@ -94,7 +113,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                 expect(visibleElements.length).to.be.not.equal(0);
                 done();
-            },500);
+            }, 500);
         });
 
         it('Should display all elements as visible after scrolling page to the bottom', function (done) {
@@ -103,7 +122,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             var depth = 0;
             var intervalId = setInterval(function () {
-                scrollTo(0, depth += 50);
+                scrollTo(0, depth += 25);
             }, 1);
 
             setTimeout(function () {
@@ -115,6 +134,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }, 3000);
         });
     });
+
+    describe('<easy-fx-scroll> with FULL attribute', function () {
+        var myEl;
+
+        beforeEach(function () {
+            myEl = fixture("EasyFxScrollFull");
+        });
+
+        it('Should leave a .dirty class after changing elements visibility', function (done) {
+            var depth = 0;
+            var intervalId = setInterval(function () {
+                scrollTo(0, depth += 25);
+            }, 1);
+
+            setTimeout(function () {
+                clearInterval(intervalId);
+                var totalElemnets = document.querySelectorAll("[data-fx-scroll]").length;
+                var dirtyElements = document.querySelectorAll(".dirty").length;
+                expect(dirtyElements).to.be.equal(totalElemnets);
+                done();
+            }, 3000);
+        });
+    })
 </script>
 
 </body>
